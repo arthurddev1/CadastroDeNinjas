@@ -1,9 +1,13 @@
 package dev.java10x.CadastroDeNinjas.Missoes;
 
+import java.util.List;
+
+import dev.java10x.CadastroDeNinjas.Ninjas.NinjaModel;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -13,9 +17,13 @@ public class MissoesModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nome;
-    private String dificuldade;
 
+    private String nome;
+
+    private String dificuldade;
+    // uma missao para varios ninjas
+    @OneToMany(mappedBy= "missoes")
+    private List<NinjaModel> ninjas;
 
     public MissoesModel(){
 
